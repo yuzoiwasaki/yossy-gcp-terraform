@@ -3,9 +3,9 @@ resource "google_compute_network" "vpc_network" {
 }
 
 resource "google_vpc_access_connector" "connector" {
-  name = "vpc-con"
+  name          = "vpc-con"
   ip_cidr_range = "10.20.0.0/28"
-  network = google_compute_network.vpc_network.id
+  network       = google_compute_network.vpc_network.id
 }
 
 resource "google_compute_global_address" "private_ip_address" {

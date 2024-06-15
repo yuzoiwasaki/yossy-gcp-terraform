@@ -5,7 +5,7 @@ resource "google_cloud_run_v2_service" "app" {
 
   template {
     containers {
-      image = "us-docker.pkg.dev/cloudrun/container/hello"
+      image = "gcr.io/${var.project_id}/cloudrun-sample:v1"
     }
   }
 }

@@ -5,7 +5,27 @@ resource "google_cloud_run_v2_service" "app" {
 
   template {
     containers {
-      image = "gcr.io/${var.project_id}/cloudrun-sql-connect:v1"
+      image = "gcr.io/${var.project_id}/cloudrun-environment-variable:v1"
+
+      env {
+        name  = "DB_HOST"
+        value = "10.10.0.3"
+      }
+
+      env {
+        name  = "DB_USER"
+        value = "yuzo"
+      }
+
+      env {
+        name  = "DB_PASSWORD"
+        value = "password"
+      }
+
+      env {
+        name  = "DB_NAME"
+        value = "maindb"
+      }
     }
 
     vpc_access {

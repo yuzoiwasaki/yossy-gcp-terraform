@@ -5,7 +5,12 @@ resource "google_cloud_run_v2_service" "app" {
 
   template {
     containers {
-      image = "gcr.io/${var.project_id}/cloudrun-sample:v1"
+      image = "gcr.io/${var.project_id}/cloudrun-sql-connect:v1"
+    }
+
+    vpc_access {
+      connector = google_vpc_access_connector.connector.id
+      egress    = "ALL_TRAFFIC"
     }
   }
 }
